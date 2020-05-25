@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'partials/_nav.html' %}
+<h1>Welcome {{ email }}</h1>
+<h2>My Notes</h2>
+{% for note in notes %}
+<h3>{{ note.title }}</h3>
+<p>{{ note.content }}</p>
+{% endfor %}
+
+{% endblock body %}

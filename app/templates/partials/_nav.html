@@ -1,0 +1,13 @@
+<header>
+    <a href="{{ url_for('index') }}">stacknotes</a>
+    <nav>
+        <ul>
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('accounts.signout') }}">Sign Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('accounts.signin') }}">Sign In</a></li>
+            <li><a href="{{ url_for('accounts.signup') }}">Get Started</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
