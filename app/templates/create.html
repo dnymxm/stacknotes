@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'partials/_nav.html' %}
+<h1>Create a new Note</h1>
+<p>Create Notes to never forgot those little things ever again!
+</p>
+<form action="" , method="POST">
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title">
+    <label for="content">Content</label>
+    <textarea name="content" id="content"></textarea>
+    {{ simplemde.load_id('content') }}
+    <input type="submit" value="Save">
+</form>
+{% endblock body %}

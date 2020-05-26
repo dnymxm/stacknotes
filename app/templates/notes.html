@@ -8,5 +8,6 @@
 <h3>{{ note.title }}</h3>
 <p>{{ note.content }}</p>
 {% endfor %}
+<a href="{{ url_for('notes.create') }}">New note</a>
 
 {% endblock body %}

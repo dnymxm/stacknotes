@@ -1,10 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
+from flask_simplemde import SimpleMDE
 
 db = SQLAlchemy()
 migrate = Migrate()
+mde = SimpleMDE()
 
 
 def create_app(config_file='config.py'):
@@ -16,6 +18,7 @@ def create_app(config_file='config.py'):
     login_manager = LoginManager()
     login_manager.login_view = 'accounts.signin'
     login_manager.init_app(app)
+    mde.init_app(app)
 
     from .models import User
 
@@ -25,6 +28,8 @@ def create_app(config_file='config.py'):
 
     @app.route('/')
     def index():
+        if current_user.is_authenticated:
+            return redirect(url_for('notes.index'))
         return render_template('index.html')
 
     from . import notes
