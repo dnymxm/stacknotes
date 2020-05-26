@@ -134,3 +134,7 @@ dmypy.json
 #.pyc files
 __pycache__/
 */__pycache__/
+
+# .DS_Store files
+.DS_Store
+app/.DS_Store

@@ -1,13 +1,30 @@
-<header>
-    <a href="{{ url_for('index') }}">stacknotes</a>
-    <nav>
-        <ul>
-            {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('accounts.signout') }}">Sign Out</a></li>
-            {% else %}
-            <li><a href="{{ url_for('accounts.signin') }}">Sign In</a></li>
-            <li><a href="{{ url_for('accounts.signup') }}">Get Started</a></li>
-            {% endif %}
-        </ul>
+<header class="hero-head">
+    <nav class="navbar is-fixed-top is-transparent" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <a href="{{ url_for('index') }}" class="is-size-4 has-text-black">
+                        stacknotes
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-end">
+                    {% if current_user.is_authenticated %}
+                    <div class="navbar-item">
+                        <a class="button" href="{{ url_for('accounts.signout') }}">Sign Out</a>
+                    </div>
+                    {% else %}
+                    <div class="navbar-item">
+                        <a class="button is-text" href="{{ url_for('accounts.signin') }}">Sign In</a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="button is-rounded is-primary" href="{{ url_for('accounts.signup') }}">Get Started</a>
+                    </div>
+                    {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </nav>
 </header>
