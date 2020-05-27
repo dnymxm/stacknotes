@@ -5,12 +5,29 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
-<form action="" method="POST">
 
-    <label for="email">Email adress</label>
-    <input type="email" name="email" id="email" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <a href="#">Forgot Password?</a>
-    <input type="submit">
+<form action="" method="POST">
+    <div class="field">
+        <label for="email">Email adress</label>
+        <div class="control">
+            <input class="input" type="email" name="email" id="email" required>
+        </div>
+    </div>
+    <div class="field">
+        <label for="password">Password</label>
+        <div class="control">
+            <input class="input" type="password" name="password" id="password" required>
+        </div>
+        {% if request.endpoint == 'accounts.signup' %}
+        <a href="#" class="help">Forgot Password?</a>
+        {% endif %}
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <input class="button is-link" type="submit" value="Submit">
+        </div>
+        <div class="control">
+            <input class="button is-link is-light" type="submit" value="Cancel">
+        </div>
+    </div>
 </form>

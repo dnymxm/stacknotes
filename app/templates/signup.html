@@ -2,6 +2,17 @@
 
 {% block body %}
 {% include 'partials/_nav.html' %}
-<h1>Sign up</h1>
-{% include 'partials/_form.html' %}
+<div class="columns is-mobile is-centered">
+    <div class="column is-one-quarter">
+        <div class="content">
+            <h1 class="title">Sign up</h1>
+        </div>
+        {% include 'partials/_form.html' %}
+        <div class="content is-small">
+            <p>By Signing Up, you agree to our <a href=""><strong>Terms</strong></a>
+                and that you
+                have read our <a href=""><strong>Privacy Policy</strong></a>, including our Cookie use.</p>
+        </div>
+    </div>
+</div>
 {% endblock body %}
