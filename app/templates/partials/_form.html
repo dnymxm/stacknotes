@@ -6,17 +6,21 @@
 {% endif %}
 {% endwith %}
 
+
 <form action="" method="POST">
     <div class="field">
         <label for="email">Email adress</label>
-        <div class="control">
-            <input class="input" type="email" name="email" id="email" required>
+        <div class="control has-icons-left">
+            <input class="input" type="email" name="email" id="email" placeholder="Your email" required>
+            <span class="icon is-left">
+                <i class="fas fa-envelope"></i>
+            </span>
         </div>
     </div>
     <div class="field">
         <label for="password">Password</label>
         <div class="control">
-            <input class="input" type="password" name="password" id="password" required>
+            <input class="input" type="password" name="password" id="password" placeholder="Your password" required>
         </div>
         {% if request.endpoint == 'accounts.signup' %}
         <a href="#" class="help">Forgot Password?</a>
@@ -30,4 +34,11 @@
             <input class="button is-link is-light" type="submit" value="Cancel">
         </div>
     </div>
+    {% if request.endpoint == 'accounts.signup' %}
+    <div class="content is-small">
+        <p>By Signing Up, you agree to our <a href=""><strong>Terms</strong></a>
+            and that you
+            have read our <a href=""><strong>Privacy Policy</strong></a>, including our Cookie use.</p>
+    </div>
+    {% endif %}
 </form>
