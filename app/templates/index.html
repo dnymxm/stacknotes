@@ -14,37 +14,20 @@
                     <p class="is-size-4">Stacknotes has you covered..</p>
                 </div>
                 <div class="buttons are-medium is-centered">
-                    <a href="#" class="button is-rounded is-primary">Get Started</a>
-                    <a href="#" class="button is-rounded is-primary is-outlined">Find out more</a>
+                    <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Get Started</a>
+                    <a href="#find-out-more" class="button is-rounded is-primary is-outlined">Find out more</a>
                 </div>
             </div>
         </div>
     </section>
-    <section class="section">
+    <section class="section" id="find-out-more">
         <div class="container has-text-centered">
-            <h3 class="title">What is Stacknotes?</h1>
-                <div class="content">
-                    <p class="is-size-4">Stacknotes was created in spite of wasting so much time searching for trivial
-                        things I
-                        knew I had done
-                        before. I often found myself looking through previous projects or tracking down articles for
-                        that
-                        code
-                        snippet I knew existed. I thought there had to be a better way...</p>
-                </div>
-                <div class="columns">
-                    <div class="column is-half">
-                    </div>
-                    <div class="column is-half">
-                        <div class="content">
-                            <ol type="1">
-                                <li>Create a Note</li>
-                                <li>Search your Notes</li>
-                                <li>Edit and Improve</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+            <h3 class="title">What is Stacknotes?</h3>
+            <div class="content">
+                <p class="is-size-4"> Stacknotes was created in spite of wasting so much time searching for trivial
+                    things I knew I had done before. I often found myself looking through previous projects or tracking
+                    down articles for that code snippet I knew existed. I thought there had to be a better way...</p>
+            </div>
         </div>
     </section>
 </main>

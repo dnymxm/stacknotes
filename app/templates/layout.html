@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     {{ simplemde.css }}
     {{ simplemde.js }}
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     <title>Stacknotes</title>
 </head>
 
-<body class="has-navbar-fixed-top">
+<body class="has-navbar-fixed-top has-background-light">
     {% block body %}
 
     {% endblock body %}
     <footer class="footer hero-foot">
-        <div class="content has-text-centered">
-            Copyright © 2020 stacknotes, All rights reserved
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+        <div class="container">
+            <div class="content has-text-centered">
+                Copyright © 2020 stacknotes, All rights reserved
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
         </div>
     </footer>
 </body>
