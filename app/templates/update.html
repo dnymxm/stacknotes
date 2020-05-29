@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'partials/_nav.html' %}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-three-quarters">
+                <div class="content">
+                    <h1 class="title is-3">Edit Note</h1>
+                </div>
+                <form action="{{ url_for('notes.update', id=note.id) }}" , method="POST">
+                    <div class="field">
+                        <label for="title">Title</label>
+                        <div class="control">
+                            <input class="input" type="text" name="title" id="title" value="{{ note.title }}"
+                                placeholder="Keep the title short but descriptive">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="content">Content</label>
+                        <div class="control">
+                            <textarea class="textarea" name="content" id="content">{{ note.content }}</textarea>
+                            {{ simplemde.load_id('content') }}
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input class="button is-success" type="submit" value="Save">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

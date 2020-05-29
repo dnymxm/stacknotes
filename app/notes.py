@@ -36,15 +36,26 @@ def create():
 
 @bp.route('/view/<int:id>')
 def view(id):
-    note = Notes.query.get(id)
+    note = Notes.query.get_or_404(id)
     return render_template('view.html', note=note)
 
 
-@bp.route('/delete/<int:id>')
-def delete(id):
-    return 'Delete'
-
-
-@bp.route('/update/<int:id>')
+@bp.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
 def update(id):
-    return 'Update'
+    note = Notes.query.get_or_404(id)
+    if request.method == 'POST':
+        note.title = request.form.get('title')
+        note.content = request.form.get('content')
+        db.session.commit()
+        return redirect(url_for('notes.index'))
+    return render_template('update.html', note=note)
+
+
+@bp.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    note = Notes.query.get_or_404(id)
+    db.session.delete(note)
+    db.session.commit()
+    return redirect(url_for('notes.index'))
