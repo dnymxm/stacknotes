@@ -36,4 +36,15 @@ def create():
 
 @bp.route('/view/<int:id>')
 def view(id):
-    return 'View Note'
+    note = Notes.query.get(id)
+    return render_template('view.html', note=note)
+
+
+@bp.route('/delete/<int:id>')
+def delete(id):
+    return 'Delete'
+
+
+@bp.route('/update/<int:id>')
+def update(id):
+    return 'Update'

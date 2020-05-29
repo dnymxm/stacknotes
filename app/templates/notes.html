@@ -7,37 +7,41 @@
         <h1 class="title is-spaced is-3">Welcome <em>{{ email }}</em></h1>
         <div class="columns is-mobile is-vcentered">
             <div class="column">
-                <h2 class="subtitle is-5">My Notes</h2>
+                <div class="content">
+                    <h2 class="subtitle is-5">My Notes</h2>
+                </div>
             </div>
             <div class="column">
-                <div class=" content has-text-right">
+                <div class="content has-text-right">
                     <a class="button is-primary" href="{{ url_for('notes.create') }}">New note</a>
                 </div>
             </div>
         </div>
-        <div class="columns">
+        <div class="columns is-multiline">
             {% if notes %}
             {% for note in notes %}
             <div class="column is-one-third">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-header-title">
-                            <h3>{{ note.title }}</h3>
+                <a href="{{ url_for('notes.view', id=note.id) }}">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">{{ note.title }}</p>
+                        </header>
+                        <div class="card-content">
+                            <p>{{ note.content|truncate(100) }}</p>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <p>{{ note.content }}</p>
-                    </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
             {% endif %}
             <div class="column is-one-third">
-                <div class="card">
-                    <div class="card-content has-text-centered">
-                        <p>+</p>
+                <a href="{{ url_for('notes.create') }}">
+                    <div class="card has-background-light">
+                        <div class="card-content has-text-centered">
+                            <p class="is-size-1">+</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
