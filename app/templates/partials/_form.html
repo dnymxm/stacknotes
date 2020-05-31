@@ -1,7 +1,9 @@
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
-<p>{{ message }}</p>
+<div class="notification is-warning is-light">
+    {{ message }}
+</div>
 {% endfor %}
 {% endif %}
 {% endwith %}
@@ -19,7 +21,7 @@
         <div class="control">
             <input class="input" type="password" name="password" id="password" placeholder="Your password" required>
         </div>
-        {% if request.endpoint == 'accounts.signup' %}
+        {% if request.endpoint == 'accounts.signin' %}
         <a href="#" class="help">Forgot Password?</a>
         {% endif %}
     </div>

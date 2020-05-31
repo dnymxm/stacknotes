@@ -4,20 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     {{ simplemde.css }}
     {{ simplemde.js }}
     <title>Stacknotes</title>
 </head>
 
-<body class="has-navbar-fixed-top has-background-light">
+<body class="has-navbar-fixed-top">
     {% block body %}
 
     {% endblock body %}
     <footer class="footer hero-foot">
         <div class="container">
-            <div class="content has-text-centered">
-                Copyright © 2020 stacknotes, All rights reserved
+            <div class="content has-text-left">
+                <p>Copyright © 2020 stacknotes, All rights reserved</p>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
             </div>
