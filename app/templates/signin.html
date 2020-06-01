@@ -2,16 +2,18 @@
 
 {% block body %}
 {% include 'partials/_nav.html' %}
-<section class="section">
-    <div class="columns is-centered">
-        <div class="column is-one-quarter">
-            <div class="box">
-                <div class="content">
-                    <h1 class="title">Sign in</h1>
+<main>
+    <section class="section">
+        <div class="columns is-centered">
+            <div class="column is-one-quarter">
+                <div class="box">
+                    <div class="content">
+                        <h1 class="title">Sign in</h1>
+                    </div>
+                    {% include 'partials/_form.html' %}
                 </div>
-                {% include 'partials/_form.html' %}
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 {% endblock body %}

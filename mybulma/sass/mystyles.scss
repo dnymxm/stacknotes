@@ -1,6 +1,18 @@
 @charset "utf-8";
 
-$footer-padding: 3rem 1.5rem 6rem;	
+// Global CSS
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh
+}
+
+main {
+    flex: 1;
+}
+
+// Customized BULMA
+$footer-padding: 2rem 0rem 2rem;	
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/bulma.sass";

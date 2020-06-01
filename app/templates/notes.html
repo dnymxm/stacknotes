@@ -2,48 +2,50 @@
 
 {% block body %}
 {% include 'partials/_nav.html' %}
-<section class="section">
-    <div class="container">
-        <h1 class="title is-spaced is-3">Welcome <em>{{ email }}</em></h1>
-        <div class="columns is-mobile is-vcentered">
-            <div class="column">
-                <div class="content">
-                    <h2 class="subtitle is-5">My Notes</h2>
+<main>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-spaced is-3">Welcome <em>{{ email }}</em></h1>
+            <div class="columns is-mobile is-vcentered">
+                <div class="column">
+                    <div class="content">
+                        <h2 class="subtitle is-5">My Notes</h2>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content has-text-right">
+                        <a class="button is-primary" href="{{ url_for('notes.create') }}">New note</a>
+                    </div>
                 </div>
             </div>
-            <div class="column">
-                <div class="content has-text-right">
-                    <a class="button is-primary" href="{{ url_for('notes.create') }}">New note</a>
+            <div class="columns is-multiline">
+                {% if notes %}
+                {% for note in notes %}
+                <div class="column is-one-third">
+                    <a href="{{ url_for('notes.view', id=note.id) }}">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">{{ note.title }}</p>
+                            </header>
+                            <div class="card-content">
+                                <p>{{ note.content|truncate(100) }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="column is-one-third">
+                    <a href="{{ url_for('notes.create') }}">
+                        <div class="card has-background-light">
+                            <div class="card-content has-text-centered">
+                                <p class="is-size-1">+</p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="columns is-multiline">
-            {% if notes %}
-            {% for note in notes %}
-            <div class="column is-one-third">
-                <a href="{{ url_for('notes.view', id=note.id) }}">
-                    <div class="card">
-                        <header class="card-header">
-                            <p class="card-header-title">{{ note.title }}</p>
-                        </header>
-                        <div class="card-content">
-                            <p>{{ note.content|truncate(100) }}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-            {% endif %}
-            <div class="column is-one-third">
-                <a href="{{ url_for('notes.create') }}">
-                    <div class="card has-background-light">
-                        <div class="card-content has-text-centered">
-                            <p class="is-size-1">+</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
 {% endblock body %}

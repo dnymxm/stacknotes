@@ -1,3 +1,11 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
+
+main {
+  flex: 1; }
+
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -7111,4 +7119,4 @@ label.panel-block {
 
 .footer {
   background-color: #fafafa;
-  padding: 3rem 1.5rem 6rem; }
+  padding: 2rem 0rem 2rem; }
