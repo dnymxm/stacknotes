@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
 from flask_simplemde import SimpleMDE
+from flaskext.markdown import Markdown
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -19,6 +20,7 @@ def create_app(config_file='config.py'):
     login_manager.login_view = 'accounts.signin'
     login_manager.init_app(app)
     mde.init_app(app)
+    Markdown(app)
 
     from .models import User
 

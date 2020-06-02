@@ -28,7 +28,7 @@ def signup():  # sourcery off
 
         return redirect(url_for('accounts.signin'))
 
-    return render_template('signup.html')
+    return render_template('accounts/signup.html')
 
 
 @bp.route('/signin', methods=['GET', 'POST'])
@@ -46,7 +46,7 @@ def signin():  # sourcery off
         login_user(user)
         return redirect(url_for('notes.index'))
 
-    return render_template('signin.html')
+    return render_template('accounts/signin.html')
 
 
 @bp.route('/signout')
