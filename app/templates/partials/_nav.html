@@ -11,6 +11,11 @@
             <div class="navbar-menu">
                 <div class="navbar-end">
                     {% if current_user.is_authenticated %}
+                    {% if request.endpoint != 'notes.index' %}
+                    <div class="navbar-item">
+                        <a href="{{ url_for('notes.index') }}" class="button is-primary">My Notes</a>
+                    </div>
+                    {% endif %}
                     <div class="navbar-item">
                         <a class="button" href="{{ url_for('accounts.signout') }}">Sign Out</a>
                     </div>
