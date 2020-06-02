@@ -14,8 +14,8 @@ def index():
     return render_template('notes.html', notes=notes, email=current_user.email)
 
 
-@bp.route('/create', methods=['GET', 'POST'])
-@login_required
+@ bp.route('/create', methods=['GET', 'POST'])
+@ login_required
 def create():
     if request.method == 'POST':
         title = request.form.get('title')
@@ -34,14 +34,14 @@ def create():
     return render_template('create.html')
 
 
-@bp.route('/view/<int:id>')
+@ bp.route('/view/<int:id>')
 def view(id):
     note = Notes.query.get_or_404(id)
     return render_template('view.html', note=note)
 
 
-@bp.route('/update/<int:id>', methods=['GET', 'POST'])
-@login_required
+@ bp.route('/update/<int:id>', methods=['GET', 'POST'])
+@ login_required
 def update(id):
     note = Notes.query.get_or_404(id)
     if request.method == 'POST':
@@ -52,8 +52,8 @@ def update(id):
     return render_template('update.html', note=note)
 
 
-@bp.route('/delete/<int:id>')
-@login_required
+@ bp.route('/delete/<int:id>')
+@ login_required
 def delete(id):
     note = Notes.query.get_or_404(id)
     db.session.delete(note)

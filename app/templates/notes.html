@@ -25,7 +25,9 @@
                     <a href="{{ url_for('notes.view', id=note.id) }}">
                         <div class="card">
                             <header class="card-header">
-                                <p class="card-header-title">{{ note.title }}</p>
+                                <p class="card-header-title">
+                                    {{ note.title }}
+                                </p>
                             </header>
                             <div class="card-content">
                                 <p>{{ note.content|truncate(100) }}</p>
