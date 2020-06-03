@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='markdown.css') }}">
     <title>Stacknotes</title>
     {{ simplemde.css }}
     {{ simplemde.js }}
@@ -38,14 +39,21 @@
                     <div class="level-item">
                         <a href="https://github.com/dnymxm/stacknotes">
                             <span class="image is-24x24">
-                                <img src="{{ url_for('static', filename='github-brands.svg') }}" alt="github">
+                                <img src="{{ url_for('static', filename='github_logo.svg') }}" alt="github">
                             </span>
                         </a>
                     </div>
                     <div class="level-item">
                         <a href="https://twitter.com/dnymxm">
                             <span class="image is-24x24">
-                                <img src="{{ url_for('static', filename='twitter-brands.svg') }}" alt="twitter">
+                                <img src="{{ url_for('static', filename='twitter_logo.png') }}" alt="twitter">
+                            </span>
+                        </a>
+                    </div>
+                    <div class="level-item">
+                        <a href="hhttps://www.malt.fr/profile/maximediony">
+                            <span class="image is-24x24">
+                                <img src="{{ url_for('static', filename='malt_logo.png') }}" alt="malt">
                             </span>
                         </a>
                     </div>

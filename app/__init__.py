@@ -20,15 +20,22 @@ def create_app(config_file='config.py'):
     login_manager.login_view = 'accounts.signin'
     login_manager.init_app(app)
     mde.init_app(app)
-    Markdown(app)
+    Markdown(
+        app,
+        extensions=['fenced_code', 'codehilite'],
+        extension_configs={'codehilite': {
+            'noclasses': True,
+            'pygments_style': 'friendly'}
+        }
+    )
 
     from .models import User
 
-    @login_manager.user_loader
+    @ login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    @app.route('/')
+    @ app.route('/')
     def index():
         if current_user.is_authenticated:
             return redirect(url_for('notes.index'))
