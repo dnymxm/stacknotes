@@ -11,7 +11,7 @@ bp = Blueprint('notes', __name__, url_prefix='/notes')
 @login_required
 def index():
     notes = Notes.query.filter_by(owner_id=current_user.id).all()
-    return render_template('notes/index.html', notes=notes, email=current_user.email)
+    return render_template('notes/index.html', notes=notes)
 
 
 @bp.route('/create', methods=['GET', 'POST'])
