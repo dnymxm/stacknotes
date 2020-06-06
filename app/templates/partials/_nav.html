@@ -9,6 +9,20 @@
                 </div>
             </div>
             <div class="navbar-menu">
+                {% if current_user.is_authenticated %}
+                <div class="navbar-start">
+                    <div class="navbar-item">
+                        <form action="{{ url_for('notes.search') }}" method="GET">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="search" name="q""
+                                        placeholder=" Search notes...">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
                 <div class="navbar-end">
                     {% if current_user.is_authenticated %}
                     {% if request.endpoint != 'notes.index' %}

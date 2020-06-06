@@ -36,6 +36,7 @@ def create():
 @bp.route('/view/<int:id>')
 def view(id):
     note = Notes.query.get_or_404(id)
+    note.owner_id = str(note.owner_id)
     return render_template('notes/view.html', note=note)
 
 
@@ -58,3 +59,13 @@ def delete(id):
     db.session.delete(note)
     db.session.commit()
     return redirect(url_for('notes.index'))
+
+
+@bp.route('/search')
+@login_required
+def search():
+    query = request.args.get('q')
+    notes = Notes.query.filter(Notes.content.like('%'+query+'%')).all()
+    for note in notes:
+        note.owner_id = str(note.owner_id)
+    return render_template('notes/search.html', notes=notes)
