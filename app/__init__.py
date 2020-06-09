@@ -22,9 +22,7 @@ def create_app(config_file='config.py'):
     # Database
     db.init_app(app)
     # Migrations
-    migrate.init_app(app, db)
-    # View by default for unauthorized users
-    login_manager.login_view = 'accounts.signin'
+    migrate.init_app(app, db, render_as_batch=True)
     # Authentification
     login_manager.init_app(app)
     # Mardkown Editor

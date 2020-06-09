@@ -8,31 +8,93 @@
 {% endif %}
 {% endwith %}
 
-
 <form action="" method="POST">
+    {{ form.csrf_token }}
+
+    {% if request.endpoint == 'accounts.signup' %}
     <div class="field">
-        <label for="email">Email adress</label>
+        {{ form.name.label }}
         <div class="control">
-            <input class="input" type="email" name="email" id="email" placeholder="Your email" required>
+            {{ form.name(class="input", placeholder="Maxime")}}
         </div>
+        {% if form.name.errors %}
+        <div class="notification is-warning is-light">
+            {% for error in form.name.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
+    {% endif %}
+
     <div class="field">
-        <label for="password">Password</label>
+        {{ form.email.label }}
         <div class="control">
-            <input class="input" type="password" name="password" id="password" placeholder="Your password" required>
+            {{ form.email(class="input", placeholder="hello@maxime.com") }}
         </div>
+        {% if form.email.errors %}
+        <div class="notification is-warning is-light">
+            {% for error in form.email.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="field">
+        {{ form.password.label }}
+        <div class="control">
+            {{ form.password(class="input", placeholder="******") }}
+        </div>
+        {% if form.password.errors %}
+        <div class="notification is-warning is-light">
+            {% for error in form.password.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
         {% if request.endpoint == 'accounts.signin' %}
         <a href="#" class="help">Forgot Password?</a>
         {% endif %}
     </div>
-    <div class="field is-grouped">
+
+    {% if request.endpoint == 'accounts.signup' %}
+    <div class="field">
+        {{ form.confirm.label }}
         <div class="control">
-            <input class="button is-link" type="submit" value="Submit">
+            {{ form.confirm(class="input", placeholder="******") }}
         </div>
+        {% if form.confirm.errors %}
+        <div class="notification is-warning is-light">
+            {% for error in form.confirm.errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if request.endpoint == 'accounts.signup' %}
+    <div class="field">
+        {{ form.website.label }}
         <div class="control">
-            <input class="button is-link is-light" type="submit" value="Cancel">
+            {{ form.website(class="input", placeholder="maximediony.me") }}
         </div>
     </div>
+    {% endif %}
+
+    <div class="field is-grouped">
+        <div class="control">
+            {{ form.submit(class="button is-link") }}
+        </div>
+        {% if request.endpoint == 'accounts.signup' %}
+        <div class="control">
+            <!-- Why no us of WTF here ? It doesn't exist field for cancel behavior -->
+            <a href="{{ url_for('index') }}" class="button is-link is-light">Cancel</a>
+        </div>
+        {% endif %}
+    </div>
+
     {% if request.endpoint == 'accounts.signup' %}
     <div class="content is-small">
         <p>By Signing Up, you agree to our <a href=""><strong>Terms</strong></a>

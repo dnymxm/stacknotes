@@ -4,8 +4,17 @@
 {% include 'partials/_nav.html' %}
 <main>
     <section class="section">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="notification is-primary is-light has-text-centered">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
         <div class="container">
-            <h1 class="title is-spaced is-3">Welcome <em>{{ current_user.email }}</em></h1>
+            <h1 class="title is-spaced is-3">Welcome <em>{{ current_user.name }}</em></h1>
             <div class="columns is-mobile is-vcentered">
                 <div class="column">
                     <div class="content">

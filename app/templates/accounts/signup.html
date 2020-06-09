@@ -12,6 +12,11 @@
                     </div>
                     {% include 'partials/_form.html' %}
                 </div>
+                <div class="content is-small has-text-centered">
+                    <p>Aready have an account?
+                        <a href="{{ url_for('accounts.signin') }}"> Sign in here</a>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
