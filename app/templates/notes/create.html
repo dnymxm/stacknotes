@@ -8,6 +8,9 @@
             <div class="columns is-centered">
                 <div class="column is-three-quarters">
                     <div class="content">
+                        <a href="{{ url_for('notes.index') }}" class="button is-light">Back</a>
+                    </div>
+                    <div class="content">
                         <h1 class="title is-3">Create a new Note</h1>
                         <p class="subtitle is-5">Create Notes to never forgot those little things ever again!
                         </p>
@@ -23,13 +26,14 @@
                         <div class="field">
                             <label for="content">Content</label>
                             <div class="control">
-                                <textarea class="textarea" name="content" id="content"></textarea>
+                                <textarea name="content" id="content" class="textarea"
+                                    placeholder="Press 'ESC' to exit fullscreen"></textarea>
                                 {{ simplemde.load_id('content') }}
                             </div>
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input class="button is-success" type="submit" value="Save">
+                                <input class="button is-primary" type="submit" value="Save">
                             </div>
                         </div>
                     </form>
