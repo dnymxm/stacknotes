@@ -5,17 +5,28 @@
 <main>
     <section class="hero is-fullheight-with-navbar">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="content">
-                    <h1 class="title is-1 is-spaced">Never again forget a good idea</h1>
-                    <h2 class="subtitle is-3">Ever spent ages solving a problem, only
-                        spend just as much time figuring it out
-                        again next time? Yeah, me too...</h2>
-                    <p class="is-size-4">Stacknotes has you covered..</p>
-                </div>
-                <div class="buttons are-medium is-centered">
-                    <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Get Started</a>
-                    <a href="#find-out-more" class="button is-rounded is-primary is-outlined">Find out more</a>
+            <div class="container has-text-left">
+                <div class="columns">
+                    <div class="column is-half">
+                        <div class="content">
+                            <h1 class="title is-1 is-spaced">Never again forget a good idea</h1>
+                            <h2 class="subtitle is-3">Ever spent ages solving a problem, only
+                                spend just as much time figuring it out
+                                again next time? Yeah, me too...</h2>
+                            <p class="is-size-4">Stacknotes has you covered..</p>
+                        </div>
+                        <div class="buttons are-medium is-left">
+                            <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Get
+                                Started</a>
+                            <a href="#find-out-more" class="button is-rounded is-primary is-outlined">Find out more</a>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+                        <figure class="image is-5by4">
+                            <img src="{{ url_for('static', filename='undraw_publish_article_icso.svg') }}"
+                                alt="Landing page illustration">
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>

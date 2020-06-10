@@ -37,7 +37,7 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
-            flash('Your account has been created ✌️')
+            flash('Your account has been created ✌️', 'success')
             return redirect(url_for('notes.index'))
         flash('Email address already exists')
     return render_template('accounts/signup.html', form=form)

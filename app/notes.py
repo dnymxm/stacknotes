@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import Blueprint, render_template, redirect, url_for, request, flash
 from flask_login import login_required, current_user
 
 from app import db
@@ -49,7 +49,12 @@ def update(id):
         note.content = request.form.get('content')
         db.session.commit()
         return redirect(url_for('notes.index'))
-    return render_template('notes/update.html', note=note)
+    else:
+        if note.owner_id == int(current_user.get_id()):
+            return render_template('notes/update.html', note=note)
+        else:
+            flash("You can't update a page which is not yours", "error")
+            return redirect(url_for('notes.index'))
 
 
 @bp.route('/delete/<int:id>')
