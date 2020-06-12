@@ -60,6 +60,7 @@ def update(id):
     note = Notes.query.get_or_404(id)
     form = NoteForm()
     form.content.data = note.content
+    form.title.data = note.title
 
     tags = []
     for e in note.tags:

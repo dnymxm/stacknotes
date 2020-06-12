@@ -1,16 +1,9 @@
 <form action="" method="POST">
     {{ form.csrf_token }}
     <div class="field">
-        {{ form.title.label }}
-        {% if request.endpoint == 'notes.update' %}
-        <div class="control">
-            {{ form.title(class="input", placeholder="Keep the title short but descriptive", value=note.title) }}
-        </div>
-        {% else %}
         <div class="control">
             {{ form.title(class="input", placeholder="Keep the title short but descriptive") }}
         </div>
-        {% endif %}
     </div>
     <div class="field">
         {{ form.content.label }}
