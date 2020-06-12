@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
 
 
@@ -27,4 +27,13 @@ class SigninForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(),
                                              Email(message='Enter a valid email.')])
     password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+
+class NoteForm(FlaskForm):
+    """Note Form"""
+    title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[
+                            Optional()])
+    tags = StringField('Tags', validators=[Optional()])
     submit = SubmitField('Submit')

@@ -12,8 +12,14 @@
                     </div>
                     <div class="content">
                         <h1 class="title is-3">Edit Note</h1>
+                        <p class="is-size-7 has-text-weight-light">Created on
+                            {{ note.created_at.strftime('%b %d, %Y, %H:%M:%S') }}</p>
+                        <p class="is-size-7 has-text-weight-light">Last updated
+                            {{ note.updated_at.strftime('%b %d, %Y, %H:%M:%S') }}</p>
+                        <p class="is-size-7 has-text-weight-light">{{ note.visits }} views</p>
                     </div>
-                    <form action="{{ url_for('notes.update', id=note.id) }}" , method="POST">
+                    {% include 'partials/_noteform.html' %}
+                    <!-- <form action=" {{ url_for('notes.update', id=note.id) }}" , method="POST">
                         <div class="field">
                             <label for="title">Title</label>
                             <div class="control">
@@ -29,10 +35,16 @@
                             </div>
                         </div>
                         <div class="field">
+                            <label for="Tags">Tags</label>
+                            <div class="control">
+                                <input type="text" class="input" name="tags" id="tags" value="{{ tags }}">
+                            </div>
+                        </div>
+                        <div class="field">
                             <div class="control">
                                 <input class="button is-success" type="submit" value="Save">
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>

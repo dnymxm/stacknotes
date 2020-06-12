@@ -1,13 +1,4 @@
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-{% for message in messages %}
-<div class="notification is-warning is-light">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
-{% endwith %}
-
+{% include 'partials/_notifications.html' %}
 <form action="" method="POST">
     {{ form.csrf_token }}
 

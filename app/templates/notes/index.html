@@ -5,24 +5,7 @@
 <main>
     <section class="section">
         <div class="container">
-            {% with messages = get_flashed_messages(category_filter=["success"]) %}
-            {% if messages %}
-            {% for message in messages %}
-            <div class="notification is-primary is-light has-text-centered">
-                {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-            {% with errors = get_flashed_messages(category_filter=["error"]) %}
-            {% if errors %}
-            {% for error in errors %}
-            <div class="notification is-warning is-light has-text-centered">
-                {{ error }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
+            {% include 'partials/_notifications.html' %}
             <h1 class="title is-spaced is-3">Welcome <em>{{ current_user.name }}</em></h1>
             <div class="columns is-mobile is-vcentered">
                 <div class="column">

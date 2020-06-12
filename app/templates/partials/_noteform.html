@@ -1,0 +1,39 @@
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    <div class="field">
+        {{ form.title.label }}
+        {% if request.endpoint == 'notes.update' %}
+        <div class="control">
+            {{ form.title(class="input", placeholder="Keep the title short but descriptive", value=note.title) }}
+        </div>
+        {% else %}
+        <div class="control">
+            {{ form.title(class="input", placeholder="Keep the title short but descriptive") }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="field">
+        {{ form.content.label }}
+        <div class="control">
+            {{ form.content(class="textarea", placeholder="Press 'ESC' to exit fullscreen") }}
+            {{ simplemde.load_id('content') }}
+        </div>
+    </div>
+    <div class="field">
+        {{ form.tags.label }}
+        {% if request.endpoint == 'notes.update' %}
+        <div class="control">
+            {{ form.tags(class="input", placeholder="Provide a comma seperated list of tags e.g. python, flask", value=tags) }}
+        </div>
+        {% else %}
+        <div class="control">
+            {{ form.tags(class="input", placeholder="Provide a comma seperated list of tags e.g. python, flask") }}
+        </div>
+        {% endif %}
+    </div>
+    <div class="field">
+        <div class="control">
+            {{ form.submit(class="button is-primary", value="Save") }}
+        </div>
+    </div>
+</form>

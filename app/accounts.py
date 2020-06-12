@@ -37,9 +37,9 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
-            flash('Your account has been created ✌️', 'success')
+            flash('Your account has been created ✌️', 'primary')
             return redirect(url_for('notes.index'))
-        flash('Email address already exists')
+        flash('Email address already exists', 'info')
     return render_template('accounts/signup.html', form=form)
 
 
@@ -66,7 +66,7 @@ def signin():
                 if is_safe_url(url=next_page, allowed_hosts=request.host_url):
                     return redirect(url_for(next_page, id=id))
             return redirect(url_for('notes.index'))
-        flash('Please check your login details and try again.')
+        flash('Please check your login details and try again.', 'warning')
         return redirect(url_for('accounts.signin'))
     return render_template('accounts/signin.html', form=form)
 
@@ -84,5 +84,5 @@ def unauthorized():
     """Redirect unauthorized users to Login or Index page."""
     if request.endpoint == 'accounts.signout':
         return redirect(url_for('index'))
-    flash('You must be logged in to view that page.')
+    flash('You must be logged in to view that page.', 'info')
     return redirect(url_for('accounts.signin', next=request.endpoint, **request.view_args))
