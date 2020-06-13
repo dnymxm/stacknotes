@@ -72,7 +72,7 @@ def update(id):
         note.title = form.title.data
         note.content = form.content.data
         note.updated_at = datetime.now()
-
+        note.tags.clear()
         tags = form.tags.data.split(', ')
         if tags:
             for tag in tags:
