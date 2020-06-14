@@ -11,6 +11,10 @@ mde = SimpleMDE()
 login_manager = LoginManager()
 
 
+def not_found(error):
+    return render_template('404.html'), 404
+
+
 def create_app(config_file='config.py'):
     """Construct the core app object"""
     app = Flask(__name__)
@@ -50,5 +54,8 @@ def create_app(config_file='config.py'):
 
     from . import accounts
     app.register_blueprint(accounts.bp)
+
+    # Register Errors
+    app.register_error_handler(404, not_found)
 
     return app

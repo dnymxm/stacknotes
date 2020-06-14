@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% include 'partials/_nav.html' %}
+<main>
+    <section class="section">
+        <div class="container has-text-left">
+            <div class="columns is-vcentered">
+                <div class="column">
+                    <div class="content is-large">
+                        <h1 class="title">Oops!</h1>
+                        <h3 class="subtitle">We can't seem to find the page you're looking for.</h3>
+                        <p>Here are some helpful links instead:</p>
+                        <ul>
+                            <li><a href="{{ url_for('index') }}" class="button is-text">Home</a></li>
+                            {% if current_user.is_authenticated %}
+                            <li><a href="{{ url_for('notes.create') }}" class="button is-text">Create a note</a></li>
+                            {% else %}
+                            <li><a href="{{ url_for('accounts.signin') }}" class="button is-text">Signin</a></li>
+                            <li><a href="{{ url_for('accounts.signup') }}" class="button is-text">Signup</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="column">
+                    <figure class="image is-5by4">
+                        <img src="{{ url_for('static', filename='undraw_page_not_found_su7k.svg') }}"
+                            alt="Page Not Found">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock body %}
