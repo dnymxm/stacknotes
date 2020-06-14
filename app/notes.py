@@ -59,14 +59,20 @@ def view(id):
 def update(id):
     note = Notes.query.get_or_404(id)
     form = NoteForm()
-    form.content.data = note.content
-    form.title.data = note.title
 
-    tags = []
-    for e in note.tags:
-        tag = Tag.query.get_or_404(e.id)
-        tags.append(tag.name)
-    tags = ', '.join(tags)
+    if request.method == 'GET':
+        form.title.data = note.title
+        form.content.data = note.content
+        tags = []
+        for e in note.tags:
+            tag = Tag.query.get_or_404(e.id)
+            tags.append(tag.name)
+        tags = ', '.join(tags)
+        if note.owner_id == current_user.id:
+            return render_template('notes/update.html', note=note, tags=tags, form=form)
+        else:
+            flash("You can't update a page which is not yours", "warning")
+            return redirect(url_for('notes.index'))
 
     if form.validate_on_submit():
         note.title = form.title.data
@@ -88,12 +94,6 @@ def update(id):
         db.session.add(note)
         db.session.commit()
         return redirect(url_for('notes.index'))
-    else:
-        if note.owner_id == current_user.id:
-            return render_template('notes/update.html', note=note, tags=tags, form=form)
-        else:
-            flash("You can't update a page which is not yours", "warning")
-            return redirect(url_for('notes.index'))
 
 
 @bp.route('/delete/<int:id>')

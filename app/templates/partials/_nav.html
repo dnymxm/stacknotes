@@ -14,9 +14,12 @@
                     <div class="navbar-item">
                         <form action="{{ url_for('notes.search') }}" method="GET">
                             <div class="field">
-                                <div class="control">
+                                <div class="control has-icons-left">
                                     <input class="input" type="search" name="q""
                                         placeholder=" Search notes...">
+                                    <span class="icon is-left">
+                                        <i class="fas fa-search"></i>
+                                    </span>
                                 </div>
                             </div>
                         </form>
