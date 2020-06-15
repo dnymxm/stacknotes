@@ -4,11 +4,13 @@ from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
 from flask_simplemde import SimpleMDE
 from flaskext.markdown import Markdown
+from flask_mail import Mail
 
 db = SQLAlchemy()
 migrate = Migrate()
 mde = SimpleMDE()
 login_manager = LoginManager()
+mail = Mail()
 
 
 def not_found(error):
@@ -40,6 +42,8 @@ def create_app(config_file='config.py'):
             'pygments_style': 'friendly'}
         }
     )
+    # Mail
+    mail.init_app(app)
 
     # Landing page
     @app.route('/')
