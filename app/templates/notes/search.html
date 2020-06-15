@@ -3,10 +3,10 @@
 {% block body %}
 {% include 'partials/_nav.html' %}
 <main>
+    {% if notes %}
     <section class="section">
         <div class="container">
             <h1 class="title">Your notes for '{{ request.args.get('q') }}'</h1>
-            {% if notes %}
             <div class="columns is-multiline">
                 {% for note in notes %}
                 {% if note.owner_id == current_user.get_id() %}
@@ -27,13 +27,11 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            {% endif %}
         </div>
     </section>
     <section class="section">
         <div class="container">
             <h1 class="title">Other's notes</h1>
-            {% if notes %}
             <div class="columns is-multiline">
                 {% for note in notes %}
                 {% if note.owner_id != current_user.get_id() %}
@@ -54,8 +52,25 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            {% endif %}
         </div>
     </section>
+    {% else %}
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <div class="content has-text-centered">
+                        <h1 class="title is-1">Arf..</h1>
+                        <h3 class="subtitle is-3">Nothing was found for your search</h3>
+                        <figure class="image is-128x128 is-inline-block">
+                            <img src="{{ url_for('static', filename='undraw_no_data_qbuo.svg') }}"
+                                alt="Nothing was found for your search">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
 </main>
 {% endblock body %}
