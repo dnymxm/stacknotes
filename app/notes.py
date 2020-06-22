@@ -84,7 +84,7 @@ def update(id):
             for tag in tags:
                 tag_exists = Tag.query.filter_by(name=tag).first()
                 if not tag_exists:
-                    new_tag = Task(tag)
+                    new_tag = Tag(tag)
                     db.session.add(new_tag)
                     note.tags.append(new_tag)
                 else:

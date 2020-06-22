@@ -2,13 +2,15 @@ from flask import Flask, render_template, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager, current_user
-from flask_simplemde import SimpleMDE
+# from flask_simplemde import SimpleMDE
+from flask_easymde import EasyMDE
 from flaskext.markdown import Markdown
 from flask_mail import Mail
 
 db = SQLAlchemy()
 migrate = Migrate()
-mde = SimpleMDE()
+# mde = SimpleMDE()
+mde = EasyMDE()
 login_manager = LoginManager()
 mail = Mail()
 
