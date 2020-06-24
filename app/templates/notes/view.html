@@ -14,6 +14,18 @@
                                     <h1 class="title is-spaced">{{ note.title }}</h1>
                                 </div>
                             </div>
+                            <div class="level-item">
+                                <span class="icon is-medium">
+                                    <span class="fa-stack">
+                                      <i class="fas fa-circle fa-stack-2x"></i>
+                                      {% if note.privacy %}
+                                        <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                                        {% else %}
+                                        <i class="fas fa-unlock fa-stack-1x fa-inverse"></i>
+                                      {% endif %}
+                                    </span>
+                                </span>
+                            </div>
                         </div>
                         {% if current_user.get_id() == note.owner_id %}
                         <div class="level-right">

@@ -16,3 +16,6 @@ $footer-padding: 2rem 0rem 2rem;
 
 // Import only what you need from Bulma
 @import "../node_modules/bulma/bulma.sass";
+
+// Bulma Extensions
+@import "../node_modules/bulma-switch/src/sass/index.sass"

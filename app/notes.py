@@ -25,19 +25,20 @@ def create():  # sourcery off
     if form.validate_on_submit():
         note = Notes(title=form.title.data,
                      content=form.content.data,
-                     privacy=False,
+                     privacy=form.privacy.data,
                      owner_id=current_user.id)
-        tags = form.tags.data.split(', ')
-        if tags:
-            for tag in tags:
-                tag_exists = Tag.query.filter_by(name=tag).first()
-                if not tag_exists:
-                    new_tag = Tag(tag)
-                    db.session.add(new_tag)
-                    note.tags.append(new_tag)
-                else:
-                    db.session.add(tag_exists)
-                    note.tags.append(tag_exists)
+        if form.tags.data:
+            tags = form.tags.data.split(', ')
+            if tags:
+                for tag in tags:
+                    tag_exists = Tag.query.filter_by(name=tag).first()
+                    if not tag_exists:
+                        new_tag = Tag(tag)
+                        db.session.add(new_tag)
+                        note.tags.append(new_tag)
+                    else:
+                        db.session.add(tag_exists)
+                        note.tags.append(tag_exists)
         db.session.add(note)
         db.session.commit()
 
@@ -63,6 +64,7 @@ def update(id):
     if request.method == 'GET':
         form.title.data = note.title
         form.content.data = note.content
+        form.privacy.data = note.privacy
         tags = []
         for e in note.tags:
             tag = Tag.query.get_or_404(e.id)
@@ -77,20 +79,21 @@ def update(id):
     if form.validate_on_submit():
         note.title = form.title.data
         note.content = form.content.data
+        note.privacy = form.privacy.data
         note.updated_at = datetime.now()
         note.tags.clear()
-        tags = form.tags.data.split(', ')
-        if tags:
-            for tag in tags:
-                tag_exists = Tag.query.filter_by(name=tag).first()
-                if not tag_exists:
-                    new_tag = Tag(tag)
-                    db.session.add(new_tag)
-                    note.tags.append(new_tag)
-                else:
-                    db.session.add(tag_exists)
-                    note.tags.append(tag_exists)
-
+        if form.tags.data:
+            tags = form.tags.data.split(', ')
+            if tags:
+                for tag in tags:
+                    tag_exists = Tag.query.filter_by(name=tag).first()
+                    if not tag_exists:
+                        new_tag = Tag(tag)
+                        db.session.add(new_tag)
+                        note.tags.append(new_tag)
+                    else:
+                        db.session.add(tag_exists)
+                        note.tags.append(tag_exists)
         db.session.add(note)
         db.session.commit()
         return redirect(url_for('notes.index'))
@@ -109,7 +112,7 @@ def delete(id):
 @login_required
 def search():
     query = request.args.get('q')
-    notes = Notes.query.filter(Notes.content.like('%'+query+'%')).all()
+    notes = Notes.query.filter(Notes.content.like('%'+query+'%'), Notes.privacy.is_(False)).all()
     for note in notes:
         note.owner_id = str(note.owner_id)
     return render_template('notes/search.html', notes=notes)

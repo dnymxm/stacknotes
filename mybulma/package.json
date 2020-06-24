@@ -14,5 +14,8 @@
   "devDependencies": {
     "bulma": "^0.8.2",
     "node-sass": "^4.14.1"
+  },
+  "dependencies": {
+    "bulma-switch": "^2.0.0"
   }
 }
