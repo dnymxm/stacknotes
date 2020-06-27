@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional, A
 
 class SignupForm(FlaskForm):
     """User Signup Form."""
-    name = StringField('Name',
+    username = StringField('Username',
                        validators=[DataRequired()])
     email = StringField('Email',
                         validators=[Length(min=6),
@@ -57,3 +57,15 @@ class NoteForm(FlaskForm):
     privacy = BooleanField('Private', validators=[AnyOf([False, True])])
     tags = StringField('Tags', validators=[Optional()])
     submit = SubmitField('Submit')
+
+class SettingsForm(FlaskForm):
+    """Settings Form"""
+    username = StringField('Username',
+                            validators=[DataRequired()])
+    email = StringField('Email',
+                        validators=[Length(min=6),
+                                    Email(message='Enter a valid email.'),
+                                    DataRequired()])
+    website = StringField('Website',
+                          validators=[Optional()])
+    submit = SubmitField('Save Changes') 

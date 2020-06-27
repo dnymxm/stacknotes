@@ -1,13 +1,12 @@
 import os
 from datetime import datetime
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_required, login_user, logout_user, current_user
 from flask_mail import Message
 from is_safe_url import is_safe_url
 from app import db, login_manager, mail
 from .models import User
-from .forms import SignupForm, SigninForm, ResetPasswordRequestForm, ResetPasswordForm
+from .forms import SignupForm, SigninForm, ResetPasswordRequestForm, ResetPasswordForm, SettingsForm
 from .email import send_password_reset_email
 
 bp = Blueprint('accounts', __name__, url_prefix='/accounts')
@@ -117,7 +116,21 @@ def reset_password(token):
 @bp.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
-    return render_template('accounts/settings.html')
+    form = SettingsForm()
+    user = User.query.filter_by(email=current_user.email).first()
+    print(form.validate_on_submit())
+    if form.validate_on_submit():
+        user.username = form.username.data
+        user.email = form.email.data
+        user.website = form.website.data
+        db.session.commit()
+        flash('Ok, you new informations have been saved', 'primary')
+        return redirect(url_for('accounts.settings'))
+    else: 
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+        form.website.data = current_user.website
+        return render_template('accounts/settings.html', form=form)
 
 @login_manager.unauthorized_handler
 def unauthorized():

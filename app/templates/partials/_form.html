@@ -4,13 +4,13 @@
 
     {% if request.endpoint == 'accounts.signup' %}
     <div class="field">
-        {{ form.name.label }}
+        {{ form.username.label }}
         <div class="control">
-            {{ form.name(class="input", placeholder="Maxime")}}
+            {{ form.username(class="input", placeholder="Maxime")}}
         </div>
-        {% if form.name.errors %}
+        {% if form.username.errors %}
         <div class="notification is-warning is-light">
-            {% for error in form.name.errors %}
+            {% for error in form.username.errors %}
             {{ error }}
             {% endfor %}
         </div>

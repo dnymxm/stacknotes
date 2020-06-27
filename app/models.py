@@ -32,14 +32,14 @@ class Notes(db.Model):
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=None)
+    username = db.Column(db.String(50), nullable=None)
     email = db.Column(db.String(120), index=True, unique=True, nullable=None)
     password = db.Column(db.String(128))
     website = db.Column(db.String(120))
     notes = db.relationship('Notes', backref='owner')
 
     def __repr__(self):
-        return f"<User {self.email}>"
+        return f"<User: {self.username} | {self.email}>"
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
