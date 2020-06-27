@@ -6,6 +6,11 @@ body {
 main {
   flex: 1; }
 
+.tab-content {
+  display: none; }
+  .tab-content.is-active {
+    display: block; }
+
 /*! bulma.io v0.8.2 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {

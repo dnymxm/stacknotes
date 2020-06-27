@@ -16,8 +16,7 @@
                             <p class="is-size-4">Stacknotes has you covered..</p>
                         </div>
                         <div class="buttons are-medium is-left">
-                            <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Get
-                                Started</a>
+                            <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Never forget again</a>
                             <a href="#find-out-more" class="button is-rounded is-primary is-outlined">Find out more</a>
                         </div>
                     </div>
@@ -42,6 +41,32 @@
                 </p>
             </div>
         </div>
+        <hr>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="box">
+                        <figure class="image">
+                            <img src="{{ url_for('static', filename='landing.png') }}" alt="Example of a view page in Stacknotes">
+                        </figure>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content has-text-left">
+                        <h3 class="title is-spaced">Create a Note</h3>
+                        <p>Notes are for anything that was hard to find and even harder to remember. If you think it might be useful in the future, add it to a note.</p>
+                    </div>
+                    <div class="content has-text-left">
+                        <h3 class="title is-spaced">Search Notes</h3>
+                        <p>You're stuck. You can't remember how you solved that tricky problem you spent hours on a few months ago. Oh wait! By searching your Notes, you can easily find what you did last time!</p>
+                    </div>
+                    <div class="content has-text-left">
+                        <h3 class="title is-spaced">Edit and Improve</h3>
+                        <p>Edit your Notes at any time, add references as well and get direct results.</p>
+                    </div>
+                </div> 
+            </div>
+        </div>
     </section>
     <section class="section">
         <div class="container has-text-centered">
@@ -50,8 +75,7 @@
                 <p>What are you waiting for? Save time and effort by using Stacknotes.
                 </p>
             </div>
-            <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Get
-                Started</a>
+            <a href="{{ url_for('accounts.signup') }}" class="button is-rounded is-primary">Never forget again</a>
         </div>
     </section>
 </main>

@@ -114,6 +114,10 @@ def reset_password(token):
         return redirect(url_for('accounts.signin'))
     return render_template('accounts/reset_password.html', form=form, token=token)
 
+@bp.route('/settings', methods=['GET', 'POST'])
+@login_required
+def settings():
+    return render_template('accounts/settings.html')
 
 @login_manager.unauthorized_handler
 def unauthorized():

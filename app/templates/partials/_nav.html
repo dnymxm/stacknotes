@@ -10,44 +10,48 @@
             </div>
             <div class="navbar-menu">
                 {% if current_user.is_authenticated %}
-                <div class="navbar-start">
-                    <div class="navbar-item">
-                        <form action="{{ url_for('notes.search') }}" method="GET">
-                            <div class="field has-addons">
-                                <div class="control has-icons-left">
-                                    <input class="input" type="search" name="q""
-                                        placeholder=" Search notes...">
-                                    <span class="icon is-left">
-                                        <i class="fas fa-search"></i>
-                                    </span>
+                    <div class="navbar-start">
+                        <div class="navbar-item">
+                            <form action="{{ url_for('notes.search') }}" method="GET">
+                                <div class="field has-addons">
+                                    <div class="control has-icons-left">
+                                        <input class="input" type="search" name="q""
+                                            placeholder=" Search notes...">
+                                        <span class="icon is-left">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                    </div>
+                                    <div class="control">
+                                        <a class="button is-primary">
+                                            Search
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="control">
-                                    <a class="button is-primary">
-                                        Search
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
                 <div class="navbar-end">
                     {% if current_user.is_authenticated %}
-                    {% if request.endpoint != 'notes.index' %}
-                    <div class="navbar-item">
-                        <a href="{{ url_for('notes.index') }}" class="button is-primary">My Notes</a>
-                    </div>
-                    {% endif %}
-                    <div class="navbar-item">
-                        <a class="button" href="{{ url_for('accounts.signout') }}">Sign Out</a>
-                    </div>
+                        {% if request.endpoint != 'notes.index' %}
+                            <div class="navbar-item">
+                                <a href="{{ url_for('notes.index') }}" class="button is-primary">All my notes</a>
+                            </div>
+                        {% endif %}
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">Account</a>
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="{{ url_for('accounts.settings') }}">Settings</a>
+                                <a class="navbar-item" href="{{ url_for('accounts.signout') }}">Sign Out</a>
+                            </div>
+                        </div>
                     {% else %}
-                    <div class="navbar-item">
-                        <a class="button is-text" href="{{ url_for('accounts.signin') }}">Sign In</a>
-                    </div>
-                    <div class="navbar-item">
-                        <a class="button is-rounded is-primary" href="{{ url_for('accounts.signup') }}">Get Started</a>
-                    </div>
+                        <div class="navbar-item">
+                            <a class="button is-text" href="{{ url_for('accounts.signin') }}">Sign In</a>
+                        </div>
+                        <div class="navbar-item">
+                            <a class="button is-rounded is-primary" href="{{ url_for('accounts.signup') }}">Never forget again</a>
+                        </div>
                     {% endif %}
                     </ul>
                 </div>

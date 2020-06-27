@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% include 'partials/_nav.html' %}
+    <main>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Account Settings</h1>
+                <h3 class="subtitle">Manage your profile preferences.</h3>
+                <div class="tabs">
+                    <ul>
+                        <li class="is-active"><a>Profil</a></li>
+                        <li><a>Preferences</a></li>
+                    </ul>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-content is-active">
+                        <p>Profil</p>
+                    </div>
+                    <div class="tab-content">
+                        <p>Preferences</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script type=text/javascript src="{{url_for('static', filename='jquery.js') }}"></script>
+    <script>
+    $('.tabs').each(function(index) {
+        var $tabParent = $(this);
+        var $tabs = $tabParent.find('li');
+        var $contents = $tabParent.next('.tabs-content').find('.tab-content');
+
+        $tabs.click(function() {
+            var curIndex = $(this).index();
+            // toggle tabs
+            $tabs.removeClass('is-active');
+            $tabs.eq(curIndex).addClass('is-active');
+            // toggle contents
+            $contents.removeClass('is-active');
+            $contents.eq(curIndex).addClass('is-active');
+        });
+    });
+    </script>
+{% endblock body %}

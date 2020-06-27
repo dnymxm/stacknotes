@@ -11,6 +11,14 @@ main {
     flex: 1;
 }
 
+.tab-content {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+} 
+
 // Customized BULMA
 $footer-padding: 2rem 0rem 2rem;	
 
