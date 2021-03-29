@@ -24,7 +24,7 @@ Markdown==3.2.2
 MarkupSafe==1.1.1
 pycodestyle==2.6.0
 pycparser==2.20
-Pygments==2.6.1
+Pygments==2.7.4
 PyJWT==1.7.1
 python-dateutil==2.8.1
 python-dotenv==0.14.0
